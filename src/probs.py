@@ -1,4 +1,4 @@
-from enums import *
+from src.enums import *
 
 weather_probs = {Weather.NORMAL.value: 0.7, Weather.HARSH.value: 0.3}
 maintenance_probs = {Maintenance.WELL_MAINTAINED.value: 0.6, Maintenance.POORLY_MAINTAINED.value: 0.4}
@@ -20,9 +20,9 @@ engine_noise_cpt_entries = [
 
 engine_start_cpt_entries = [
     [Weather.NORMAL.value, BatteryAge.NEW.value, ElectricalSystem.FUNCTIONAL.value, EngineNoise.NORMAL.value,
-     EngineStart.STARTS.value, 0.95],
+     EngineStart.STARTS.value, 0.99],
     [Weather.NORMAL.value, BatteryAge.NEW.value, ElectricalSystem.FUNCTIONAL.value, EngineNoise.NORMAL.value,
-     EngineStart.DOES_NOT_START.value, 0.05],
+     EngineStart.DOES_NOT_START.value, 0.01],
     [Weather.NORMAL.value, BatteryAge.NEW.value, ElectricalSystem.FUNCTIONAL.value, EngineNoise.NOISY.value,
      EngineStart.STARTS.value, 0.95],
     [Weather.NORMAL.value, BatteryAge.NEW.value, ElectricalSystem.FUNCTIONAL.value, EngineNoise.NOISY.value,
