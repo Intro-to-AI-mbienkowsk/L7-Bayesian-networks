@@ -31,11 +31,6 @@ class EngineNoise(Enum):
     NOISY = "Noisy"
 
 
-class EngineProblem(Enum):
-    PROBLEM = "Problem"
-    NO_PROBLEM = "No Problem"
-
-
 enum_values_from_string = {
     "weather": [Weather.HARSH.value, Weather.NORMAL.value],
     "car_maintenance": [Maintenance.WELL_MAINTAINED.value, Maintenance.POORLY_MAINTAINED.value],
