@@ -1,11 +1,12 @@
-from network import network
-from enums import *
+from src.network import network
+from src.enums import *
 from dataclasses import dataclass, field
 from itertools import product
 
 
 @dataclass
 class BNRun:
+    """Single run of the bayesian network - contains the evidence and a dictionary with the results for each node"""
     evidence: dict[str, str]
     results: dict[str, float] = field(default_factory=dict)
 
@@ -52,7 +53,7 @@ def extract_relevant_nodes(exp: BNExperiment, network_output: list):
         node_idx = next(i for i, node in enumerate(network.states) if node.name == node_name)
         # extract either a string - the state if the node is proof or the probs from a distribution object
         result[node_name] = network_output[0][node_idx] \
-            if node_name in exp.nodes_to_permutate else network_output[0][node_idx].parameters[0]
+            if node_name in exp.nodes_to_permutate + list(exp.concrete_evidence.keys()) else network_output[0][node_idx].parameters[0]
     return result
 
 
@@ -63,13 +64,9 @@ def conduct_experiment(exp: BNExperiment) -> list[BNRun]:
         formatted_evidence = format_evidence(run.evidence)
         network_output = network.predict_proba(formatted_evidence)
         run.results = extract_relevant_nodes(exp, network_output)
-    for run in runs:
-        print("------------------------\n")
-        print(run.results)
     return runs
 
 
 evidence_nodes = ["weather", "engine_noise"]
 nodes_of_interest = ["electrical_system"]
 conduct_experiment(BNExperiment({"battery_age": "Old"}, evidence_nodes, nodes_of_interest))
-

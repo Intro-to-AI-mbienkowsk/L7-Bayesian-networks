@@ -1,5 +1,5 @@
 from pomegranate import *
-from probs import *
+from src.probs import *
 
 # root nodes
 weather = DiscreteDistribution(weather_probs)
