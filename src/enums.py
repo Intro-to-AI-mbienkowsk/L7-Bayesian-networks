@@ -34,3 +34,13 @@ class EngineNoise(Enum):
 class EngineProblem(Enum):
     PROBLEM = "Problem"
     NO_PROBLEM = "No Problem"
+
+
+enum_values_from_string = {
+    "weather": [Weather.HARSH.value, Weather.NORMAL.value],
+    "car_maintenance": [Maintenance.WELL_MAINTAINED.value, Maintenance.POORLY_MAINTAINED.value],
+    "battery_age": [BatteryAge.NEW.value, BatteryAge.OLD.value],
+    "engine_start": [EngineStart.STARTS.value, EngineStart.DOES_NOT_START.value],
+    "electrical_system": [ElectricalSystem.FUNCTIONAL.value, ElectricalSystem.FAULTY.value],
+    "engine_noise": [EngineNoise.NORMAL.value, EngineNoise.NOISY.value]
+}
